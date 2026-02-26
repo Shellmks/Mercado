@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promoção Premiada</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Tela Inicial -->
+    <div class="container" id="telaInicial">
+        <h1>🎁 Promoção Especial!</h1>
+        <p>Escaneou o QR Code? Agora é sua chance!</p>
+        <button onclick="mostrarPremio()">CLIQUE AQUI</button>
+    </div>
+
+    <!-- Tela Ganhador -->
+    <div class="container premio hidden" id="telaPremio">
+        <h1>🎉 PARABÉNS!!! 🎉</h1>
+        <div class="trofeu">🏆</div>
+        <p class="mensagem">Você ganhou um prêmio!</p>
+        <div class="baloes">
+            🎈 🎈 🎈 🎈 🎈
+        </div>
+        <canvas id="confetti"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
