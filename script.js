@@ -1,7 +1,7 @@
 const SUPABASE_URL = "https://hhovzpbmovzkjhngqche.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imhob3Z6cGJtb3Z6a2pobmdxY2hlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzIwODc5MTEsImV4cCI6MjA4NzY2MzkxMX0.Yk2AgdcQBCvLivBwz26s5favHnikTJiS6_3JTFbwLYI";
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 const btn = document.getElementById("btnDescobrir");
 const resultado = document.getElementById("resultado");
@@ -16,7 +16,7 @@ btn.addEventListener("click", async () => {
     return;
   }
 
-  const { data, error } = await supabase
+  const { data, error } = await supabaseClient
   .from("qrcodes")
   .select("*")
   .eq("id", id)
@@ -32,7 +32,7 @@ console.log("ERROR:", error);
   }
 
   // Incrementa acessos
-  await supabase
+  await supabaseClient
     .from("qrcodes")
     .update({ acessos: data.acessos + 1 })
     .eq("id", id);
@@ -54,7 +54,7 @@ console.log("ERROR:", error);
 
     document.getElementById("confirmar").addEventListener("click", async () => {
 
-      await supabase
+      await supabaseClient
         .from("qrcodes")
         .update({ usado: true })
         .eq("id", id);
@@ -74,4 +74,5 @@ console.log("ERROR:", error);
   }
 
 });
+
 
