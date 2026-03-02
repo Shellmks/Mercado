@@ -17,10 +17,14 @@ btn.addEventListener("click", async () => {
   }
 
   const { data, error } = await supabase
-    .from("qrcodes")
-    .select("*")
-    .eq("id", id)
-    .single();
+  .from("qrcodes")
+  .select("*")
+  .eq("id", id)
+  .single();
+
+console.log("DATA:", data);
+console.log("ERROR:", error);
+
 
   if (error || !data) {
     resultado.innerHTML = "Código não encontrado.";
@@ -70,3 +74,4 @@ btn.addEventListener("click", async () => {
   }
 
 });
+
